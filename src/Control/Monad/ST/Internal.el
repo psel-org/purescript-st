@@ -35,11 +35,12 @@
   (lambda (lo)
     (lambda (hi)
       (lambda (f)
-        (let ((i lo))
-          (while (< i hi)
-            (funcall (funcall f i))
-            (setq i (1+ i)))
-          Data.Unit.unit)))))
+        (lambda ()
+          (let ((i lo))
+            (while (< i hi)
+              (funcall (funcall f i))
+              (setq i (1+ i)))
+            Data.Unit.unit))))))
 
 (defvar Control.Monad.ST.Internal.foreach
   (lambda (as)
